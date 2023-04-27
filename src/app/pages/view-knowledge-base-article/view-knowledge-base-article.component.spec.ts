@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ViewKnowledgeBaseArticleComponent } from './view-knowledge-base-article.component';
+
+describe('ViewKnowledgeBaseArticleComponent', () => {
+  let component: ViewKnowledgeBaseArticleComponent;
+  let fixture: ComponentFixture<ViewKnowledgeBaseArticleComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ ViewKnowledgeBaseArticleComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(ViewKnowledgeBaseArticleComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

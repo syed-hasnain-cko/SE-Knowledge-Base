@@ -1,0 +1,40 @@
+<main class="main background-gray">
+    <div class="breadcrumbs container">
+        <nav aria-label="breadcrumb" class="breadcrumbs-search-navbar">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="'/knowledge-base/'">
+                        All Categories
+                    </a>
+                </li>
+                <li *ngIf="this.fromSectionRoute" class="breadcrumb-item">
+                    <a [routerLink]="'/knowledge-base/section/' + sectionId">
+                        {{ sectionId }}
+                    </a>
+                </li>
+
+                <li *ngIf="!this.fromSectionRoute" class="breadcrumb-item">
+                    <a (click)="handleSearch()">
+                        {{ this.queryParam }}
+                    </a>
+                </li>
+ 
+ 
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ articleData?.slug }}
+                </li>
+            </ol>
+        </nav>
+    </div>
+ 
+ 
+    <section class="section-category">
+        <div class="container">
+            <div class="section-category__body">
+                <section class="section-article">
+                    <div class="container" [innerHTML]="articleData?.fields?.article_body"></div>
+                </section>
+            </div>
+        </div>
+    </section>
+ </main>

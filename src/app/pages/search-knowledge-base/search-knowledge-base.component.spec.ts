@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { SearchKnowledgeBaseComponent } from './search-knowledge-base.component';
+
+describe('SearchKnowledgeBaseComponent', () => {
+  let component: SearchKnowledgeBaseComponent;
+  let fixture: ComponentFixture<SearchKnowledgeBaseComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ SearchKnowledgeBaseComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(SearchKnowledgeBaseComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

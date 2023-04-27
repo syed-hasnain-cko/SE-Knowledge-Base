@@ -1,0 +1,89 @@
+<main class="main background-gray">
+    <div class="breadcrumbs container">
+        <nav aria-label="breadcrumb" class="breadcrumbs-search-navbar">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="'/knowledge-base/'">
+                       Search
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ headerId }}
+                </li>
+            </ol>
+ 
+ 
+            <div class="search search--inline">
+                <form>
+                    <i class="ico-search">
+                        <svg>
+                            <use xlink:href="https://buttercms.com/static/v2/images/sprite.1229afca4c5f.svg#ico-search"></use>
+                        </svg>
+                    </i>
+ 
+ 
+                    <input [(ngModel)]="searchText" type="search" name="query" id="query" value="" placeholder="Search here"
+                        class="search__field">
+ 
+ 
+                    <button type="submit" class="search__btn btn btn--solid-dark-blue btn--icon" (click)="searchKnowledgeBaseSection()">
+                        <i class="ico-arrow-send-white">
+                            <svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" fill="white"></path> </svg>
+                        </i>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </div>
+ 
+ 
+    <section class="section-category">
+        <div class="container">
+            <div class="section-category__head">
+                <div class="d-inline-block">
+                    <div class="category-icon">
+                        <img src="https://cdn.buttercms.com/JsA9TWYQ5upTxBFMiNr9" alt="How To's">
+                    </div>
+                </div>
+                <h1 class="d-inline-block">
+                    All results for search : {{ headerId }}
+                </h1>
+                <p class="mt-5">
+                    {{ knowledgeBaseData?.fields?.section_description }}
+                </p>
+            </div>
+ 
+ 
+            <div *ngIf="knowledgeBaseData && knowledgeBaseData?.length > 0" class="section-category__body">
+                <div class="row">
+                    <div class="col">
+                        <ul  class="list-group">
+                            <li *ngFor="let data of knowledgeBaseData" class="list-group-item list-group-item-action">
+                                <h5 class="d-flex justify-content-between">
+                                    {{ data?.fields?.article_name }}
+                                </h5>
+                                <p>
+                                    {{ data?.fields?.article_description }}
+                                </p>
+                                <a [routerLink]="['/knowledge-base/section/' + headerId + '/article',  data?.slug]" 
+                                [queryParams]="{ search: this.headerId }"
+                                queryParamsHandling="merge"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+ 
+ 
+            <div *ngIf="(!knowledgeBaseData) || ( knowledgeBaseData && knowledgeBaseData?.length === 0)" class="section-category__body">
+                <div class="row">
+                  <div class="col">
+                    <p>
+                      No results found. Try a different search query.
+                    </p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ </main>

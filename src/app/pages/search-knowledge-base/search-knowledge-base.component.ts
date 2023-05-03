@@ -34,6 +34,7 @@ export class SearchKnowledgeBaseComponent implements OnInit {
     this.butterCMSService.SearchKnowledgeBaseSection(this.id)
     .then((resp: any) => {
       this.knowledgeBaseData = resp?.data?.data;
+      console.log(this.knowledgeBaseData)
      
     })
     .catch(function(error: any) {

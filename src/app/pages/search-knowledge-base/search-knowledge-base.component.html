@@ -65,6 +65,12 @@
                                 <p>
                                     {{ data?.fields?.article_description }}
                                 </p>
+                                <br>
+                                <p style="position: absolute;
+                                bottom: 0;
+                                right: 0; font-style: italic; padding-left: 20px">
+                                    last updated: {{ data?.updated | date : 'short'}}
+                            </p>
                                 <a [routerLink]="['/knowledge-base/section/' + headerId + '/article',  data?.slug]" 
                                 [queryParams]="{ search: this.headerId }"
                                 queryParamsHandling="merge"></a>

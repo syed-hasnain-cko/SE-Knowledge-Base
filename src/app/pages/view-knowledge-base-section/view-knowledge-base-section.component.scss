@@ -108,8 +108,8 @@
                 user-select: none;
  
                 &.btn--solid-dark-blue {
-                    background: #151E46;
-                    border-color: #151E46;
+                    background: #2596be;
+                    border-color: #2596be;
                     color: #fff;
  
                     &.btn--icon svg {
@@ -474,8 +474,8 @@
  
  
             &:first-child {
-                border-top-left-radius: 0.25rem;
-                border-top-right-radius: 0.25rem;
+                border-top-left-radius: 0.1rem;
+                border-top-right-radius: 0.1rem;
             }
         }
     }

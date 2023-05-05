@@ -8,6 +8,7 @@ import { ViewKnowledgeBaseSectionComponent } from './pages/view-knowledge-base-s
 import { ViewKnowledgeBaseArticleComponent } from './pages/view-knowledge-base-article/view-knowledge-base-article.component';
 import { SearchKnowledgeBaseComponent } from './pages/search-knowledge-base/search-knowledge-base.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import Butter from 'buttercms';
+import { HttpClient } from '@angular/common/http';
+
 import { environment } from '../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +11,9 @@ import { environment } from '../environments/environment';
 export class ButterCmsService {
 
   butter: any;
-  constructor() {
+  constructor(private http: HttpClient) {
    this.butter = Butter(environment.apiToken);
+
  }
 
  params = {
@@ -39,6 +43,18 @@ getKnowledgeBaseSectionType(section: string) {
 
 getKnowledgeBaseArticleType(article: string) {
   return this.butter.page.retrieve('*', article);
+}
+
+listenToWebhook(url: string): Observable<any> {
+  return new Observable((observer) => {
+    const eventSource = new EventSource(url);
+    eventSource.addEventListener('message', (event) => {
+      observer.next(JSON.parse(event.data));
+    });
+    eventSource.addEventListener('error', (error) => {
+      observer.error(error);
+    });
+  });
 }
 
 

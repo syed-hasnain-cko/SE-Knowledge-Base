@@ -47,6 +47,13 @@ export class ViewKnowledgeBaseArticleComponent implements OnInit {
    .catch(function(error: any) {
      console.log('article error', error)
    });
+
+   this.butterCMSService.listenToWebhook('/webhook').subscribe((data) => {
+    console.log('Received data from webhook:', data);
+    this.butterCMSService.getKnowledgeBaseArticleType(data.id).then((resp: any)=>{
+console.log("Response data" + resp)
+    });
+  });
  }
 
  handleSearch() {

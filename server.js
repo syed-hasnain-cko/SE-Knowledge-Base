@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require("body-parser")
+const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
 const app = express();
 app.use(express.static(__dirname + '/dist/se-knowledge-base'));
 app.use(bodyParser.json())
 app.get('/*', function(req,res) {
 res.sendFile(path.join(__dirname+
 '/dist/se-knowledge-base/index.html'));});
+
 app.listen(process.env.PORT || 8080);
 app.post("/webhook", (req, res) => {
     console.log(req) 
@@ -16,3 +19,8 @@ app.post("/webhook", (req, res) => {
             'Connection': 'keep-alive'
         }).end() 
   })
+myEmitter.on('error', (err) => {
+    console.error('An error occurred:', err);
+  });
+
+
